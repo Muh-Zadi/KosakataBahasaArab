@@ -36,7 +36,7 @@ import java.util.HashMap;
 
 
 public class KosakataBuah extends AppCompatActivity {
-    public static String url = "http://192.168.43.228/kosakata/getdata_buah.php";
+    public static String url = "http://192.168.1.13/kosakata/getdata_buah.php";
     private TextView  txtIndo, txtArab;
     private RecyclerView listRecycleView;
     private RequestQueue requestQueue;

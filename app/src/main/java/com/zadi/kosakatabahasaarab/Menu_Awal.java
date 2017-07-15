@@ -94,9 +94,9 @@ public class Menu_Awal extends AppCompatActivity implements View.OnClickListener
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         switch(id) {
-            //case R.id.cari:
-            //	startActivity(new Intent(this, Pencarian.class));
-            //	break;
+            case R.id.cari:
+            startActivity(new Intent(this, com.zadi.kosakatabahasaarab.Search.Searching.class));
+            break;
             case R.id.tentang_aplikasi:
                 startActivity(new Intent(this, Tentang_App.class));
                 break;

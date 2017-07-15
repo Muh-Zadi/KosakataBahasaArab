@@ -55,7 +55,7 @@ public class CobaQuiz extends AppCompatActivity {
     JSONArray soal = null;
     CounterClass mCountDownTimer;
     private ProgressDialog pDialog;
-    private static String url = "http://192.168.43.228/kosakata/quiz/soal.php";
+    private static String url = "http://192.168.1.13/kosakata/quiz/soal.php";
     private static final String TAG_DAFTAR = "daftar_soal";
     private static final String TAG_ID = "soal_id";
     private static final String TAG_SOAL = "soal";
@@ -229,12 +229,12 @@ public class CobaQuiz extends AppCompatActivity {
             rb2.setTextColor(Color.WHITE);
             rb3.setTextColor(Color.WHITE);
             rb4.setTextColor(Color.WHITE);
-            Glide.with(getApplicationContext())
-                    .load("http://192.168.43.228/kosakata/quiz/images" + soal.getGambar())
+            /*Glide.with(getApplicationContext())
+                    .load("http://192.168.1.13/kosakata/quiz/images" + soal.getGambar())
                     .crossFade()
                     .placeholder(R.mipmap.no_available)
-                    .into(img);
-            //imageLoader.DisplayImage(soal.getGambar(), img);
+                    .into(img);*/
+            imageLoader.DisplayImage(soal.getGambar(), img);
             rb1.setText(Html.fromHtml(soal.getA()));
             rb2.setText(Html.fromHtml(soal.getB()));
             rb3.setText(Html.fromHtml(soal.getC()));

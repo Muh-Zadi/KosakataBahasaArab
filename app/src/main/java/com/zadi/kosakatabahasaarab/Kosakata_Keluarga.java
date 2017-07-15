@@ -38,7 +38,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Kosakata_Keluarga extends AppCompatActivity{
-    public static String url = "http://192.168.43.228/kosakata/getdata_keluarga.php";
+    public static String url = "http://192.168.1.13/kosakata/getdata_keluarga.php";
 
     private ProgressDialog pDialog;
     private TextView  txtIndo, txtArab;

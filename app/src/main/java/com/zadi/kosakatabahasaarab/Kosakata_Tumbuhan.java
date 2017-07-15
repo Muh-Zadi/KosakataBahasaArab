@@ -38,7 +38,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Kosakata_Tumbuhan extends AppCompatActivity{
-    public static String url = "http://192.168.43.228/kosakata/getdata_tumbuhan.php";
+    public static String url = "http://192.168.1.13/kosakata/getdata_tumbuhan.php";
     private ProgressDialog pDialog;
     private TextView  txtIndo, txtArab;
     private RecyclerView listRecycleView;

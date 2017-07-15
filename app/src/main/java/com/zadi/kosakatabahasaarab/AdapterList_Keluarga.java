@@ -44,7 +44,7 @@ public class AdapterList_Keluarga extends RecyclerView.Adapter<AdapterList_Kelua
 
         //Displaying to list with Recycle View
         Glide.with(context)
-                .load("http://192.168.43.228/kosakata/images/" + list_data.get(position).get("image"))
+                .load("http://192.168.1.13/kosakata/images/" + list_data.get(position).get("image"))
                 .crossFade()
                 .placeholder(R.mipmap.no_available)
                 .into(holder.listImage);
@@ -53,13 +53,13 @@ public class AdapterList_Keluarga extends RecyclerView.Adapter<AdapterList_Kelua
             @Override
             public void onClick(View view) {
                 Glide.with(context)
-                        .load("http://192.168.43.228/kosakata/images/" + list_data.get(position).get("image"))
+                        .load("http://192.168.1.13/kosakata/images/" + list_data.get(position).get("image"))
                         .crossFade()
                         .placeholder(R.mipmap.no_available)
                         .into(imgViewOne);
                 txtIndo.setText(list_data.get(position).get("indonesia"));
                 txtArab.setText(Html.fromHtml(list_data.get(position).get("arab")));
-                final String voice = "http://192.168.43.228/kosakata/voices/" + list_data.get(position).get("voice");
+                final String voice = "http://192.168.1.13/kosakata/voices/" + list_data.get(position).get("voice");
                 mp3 = new MediaPlayer();
                 mp3.setAudioStreamType(AudioManager.STREAM_MUSIC);
                 try{

@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.zadi.kosakatabahasaarab">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
@@ -27,9 +27,10 @@
             android:name=".KosakataBuah"
             android:label="@string/title_buah"
             android:parentActivityName=".MenuKosakata"
-            android:theme="@style/AppTheme.NoActionBar" >
-            <meta-data android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MenuKosakata"/>
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuKosakata" />
         </activity>
         <activity
             android:name=".Kosakata_Binatang"
@@ -71,12 +72,12 @@
         <activity
             android:name=".MenuKosakata"
             android:label="@string/title_activity_menu_kosakata"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:parentActivityName=".Menu_Awal">
+            android:parentActivityName=".Menu_Awal"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Menu_Awal"/>
-            </activity>
+                android:value=".Menu_Awal" />
+        </activity>
         <activity
             android:name=".Tentang_App"
             android:label="@string/tentang_aplikasi"
@@ -88,6 +89,10 @@
         <activity
             android:name=".quiz.CobaQuiz"
             android:label="@string/title_activity_coba_quiz"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Search.Searching"
+            android:label="@string/title_activity_searching"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
