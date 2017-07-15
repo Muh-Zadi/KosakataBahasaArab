@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_menu_kosakata"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg_menu"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.zadi.kosakatabahasaarab.MenuKosakata"
+    tools:showIn="@layout/activity_menu_kosakata">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:gravity="center" >
+
+            <ImageButton
+                android:id="@+id/buah_buahan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/tranparent"
+                android:onClick="click_buah_buahan"
+                android:src="@mipmap/kategoribuah" />
+
+            <ImageButton
+                android:id="@+id/binatang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:background="@color/tranparent"
+                android:onClick="click_binatang"
+                android:src="@mipmap/kategoribinatang" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:gravity="center" >
+
+            <ImageButton
+                android:id="@+id/tumbuhan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/tranparent"
+                android:onClick="click_tumbuhan"
+                android:src="@mipmap/kategoritumbuhan" />
+
+            <ImageButton
+                android:id="@+id/keluarga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:background="@color/tranparent"
+                android:onClick="click_keluarga"
+                android:src="@mipmap/kategorikeluarga" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:gravity="center" >
+
+            <ImageButton
+                android:id="@+id/anggota_badan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/tranparent"
+                android:onClick="click_anggota_badan"
+                android:src="@mipmap/kategori_anggota_badan" />
+
+            <ImageButton
+                android:id="@+id/alat_sekolah"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:background="@color/tranparent"
+                android:onClick="click_alat_sekolah"
+                android:src="@mipmap/kategori_alat_sekolah" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

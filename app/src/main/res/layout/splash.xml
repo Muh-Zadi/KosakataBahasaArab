@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/animasi"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/tampilan_awal"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="30dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtAyo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Ayo Belajar"
+            android:textColor="@color/red"
+            android:textSize="30sp"
+            android:textStyle="italic"
+            android:typeface="serif" />
+
+        <TextView
+            android:id="@+id/txtKosakata"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtAyo"
+            android:gravity="center"
+            android:text="Kosakata Bahasa"
+            android:textColor="@color/red"
+            android:textSize="30sp"
+            android:textStyle="italic"
+            android:typeface="serif" />
+
+        <TextView
+            android:id="@+id/txtArab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtKosakata"
+            android:gravity="center"
+            android:text="Arab Bergambar ... !"
+            android:textColor="@color/red"
+            android:textSize="30sp"
+            android:textStyle="italic"
+            android:typeface="serif" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/tranparent"
+            android:onClick="btnPlay"
+            android:src="@mipmap/play" />
+    </LinearLayout>
+</LinearLayout>

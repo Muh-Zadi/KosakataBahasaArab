@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.zadi.kosakatabahasaarab">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Menu_Awal"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".KosakataBuah"
+            android:label="@string/title_buah"
+            android:parentActivityName=".MenuKosakata"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MenuKosakata"/>
+        </activity>
+        <activity
+            android:name=".Kosakata_Binatang"
+            android:label="@string/title_binatang"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Kosakata_Keluarga"
+            android:label="@string/title_keluarga"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Kosakata_Tumbuhan"
+            android:label="@string/title_tumbuhan"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Kosakata_Anggota_Badan"
+            android:label="@string/title_anggota_badan"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".KosakataAlatSekolah"
+            android:label="@string/title_activity_kosakata"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".About"
+            android:label="@string/title_activity_about"
+            android:parentActivityName=".Menu_Awal"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.zadi.kosakatabahasaarab.About" />
+        </activity>
+        <activity
+            android:name=".Bantuan"
+            android:label="@string/bantuan"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".List_Quiz"
+            android:label="@string/title_activity_list__quiz"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MenuKosakata"
+            android:label="@string/title_activity_menu_kosakata"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".Menu_Awal">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Menu_Awal"/>
+            </activity>
+        <activity
+            android:name=".Tentang_App"
+            android:label="@string/tentang_aplikasi"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".quiz.Quiz_Buah"
+            android:label="@string/title_activity_quiz__buah"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".quiz.CobaQuiz"
+            android:label="@string/title_activity_coba_quiz"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+    </application>
+
+</manifest>

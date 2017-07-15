@@ -1,0 +1,32 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.zadi.kosakatabahasaarab.Menu_Awal" >
+
+   <!--   <item
+        android:id="@+id/cari"
+        android:icon="@drawable/cari"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:title="cari"/>-->
+    <item
+        android:id="@+id/tentang_aplikasi"
+        android:icon="@android:drawable/ic_search_category_default"
+        android:orderInCategory="100"
+        android:title="@string/tentang_aplikasi"/>
+    <item
+        android:id="@+id/about"
+        android:icon="@android:drawable/ic_menu_info_details"
+        android:orderInCategory="100"
+        android:title="@string/about"/>
+    <item
+        android:id="@+id/bantuan"
+        android:icon="@android:drawable/ic_menu_help"
+        android:orderInCategory="100"
+        android:title="@string/bantuan"/>
+    <item
+        android:id="@+id/exit"
+        android:icon="@android:drawable/ic_lock_power_off"
+        android:orderInCategory="100"
+        android:title="@string/exit"/>
+
+</menu>

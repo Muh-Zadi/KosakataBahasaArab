@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Kosakata Indonesia - Arab</string>
+    <string name="kategori_kosakata">Kategori Kosakata</string>
+    <string name="tentang_aplikasi">Tentang Aplikasi</string>
+    <string name="about">Aku dan AKNS</string>
+    <string name="exit">Keluar</string>
+    <string name="title_activity_about">Aku dan AKNS</string>
+    <string name="title_tumbuhan">Tumbuh - tumbuhan</string>
+    <string name="title_binatang">Binatang</string>
+    <string name="title_buah">Buah - buahan</string>
+    <string name="title_keluarga">Keluarga</string>
+    <string name="title_anggota_badan">Anggota Badan</string>
+    <string name="title_alat_sekolah">Alat Sekolah</string>
+    <string name="pencarian">Cari Kosakata</string>
+    <string name="title_activity_arti">Arti</string>
+    <string name="quiz">Quiz</string>
+    <string name="kategori_quiz">Kategori Quiz</string>
+    <string name="bantuan">Bantuan</string>
+    <string name="title_activity_list__quiz">List_Quiz</string>
+    <string name="title_activity_kosakata">Kategori Kosakata</string>
+    <string name="title_activity_menu_kosakata">Kategori Kosakata</string>
+    <string name="title_activity_tentang_app">Tentang Aplikasik</string>
+    <string name="title_activity_aboutt">Aku dan AKNS</string>
+    <string name="title_activity_quiz__buah">Quiz Buah - buahan</string>
+    <string name="title_activity_coba_quiz">CobaQuiz</string>
+</resources>

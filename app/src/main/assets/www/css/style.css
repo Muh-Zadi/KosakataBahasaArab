@@ -1,0 +1,93 @@
+@CHARSET "ISO-8859-1";
+
+@font-face {
+	font-family: Ubuntu;
+	src: url("../fonts/Ubuntu-Regular.ttf");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: Lobster;
+	src: url("../fonts/Lobster-Regular.ttf");
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: Courgette;
+	src: url("../fonts/Courgette-Regular.ttf");
+	font-weight: normal;
+}
+@font-face {
+	font-family: arnopro;
+	src: url("../fonts/ARNOPRO-REGULAR.OTF");
+	font-weight: normal;
+}
+
+body {
+	font-family: arnopro;
+	color: #eee;
+	font-size: 18px;
+	background-color: #696969;
+}
+
+html, body {
+	width: 99%;
+	overflow: visible;
+}
+
+img.fit {
+	max-width: 320px;
+	max-height: 320px;
+	display: block;
+}
+
+#foto {
+	text-align: center;
+}
+
+#foto img {
+	border-radius: 200px;
+	border: 1px solid #333;
+	width: 150px;
+	height: 150px;
+}
+
+h2 {
+	color: #333;
+	background-color: #90EE90;
+	padding: 10px;
+	border-radius: 10px;
+	font-size: 1.2em;
+}
+
+h3 {
+	background-color: #708090;
+	padding: 5px;
+	font-size: 1.2em;
+	//color: #333;
+	border-radius: 10px;
+}
+
+h4 {
+	
+}
+
+#tbl {
+	
+}
+
+#tbl tr {
+	margin: 0;
+}
+
+#tbl td {
+	margin: 0;
+	padding: 0;
+	padding: 10px 5px 10px 5px;
+}
+ol, ul {
+	margin-left: -15px;
+}
+table {
+	border-collapse: collapse;
+}
