@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.zadi.kosakatabahasaarab.quiz.Quiz;
+
 
 public class List_Quiz extends AppCompatActivity {
     String[] menuItem = {"Buah - buahan","Binatang","keluarga","Tumbuhan","Anggota badan","Alat sekolah"};
@@ -40,8 +42,8 @@ public class List_Quiz extends AppCompatActivity {
                 Intent intent = null;
                 if (position == 0)
                 {
-                   //intent = new Intent(parent.getContext(), CobaQuiz.class);
-                    //startActivity(intent);
+                   intent = new Intent(parent.getContext(), Quiz.class);
+                    startActivity(intent);
                 }
                 else if (position == 1)
                 {
