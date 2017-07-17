@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.zadi.kosakatabahasaarab.quiz.CobaQuiz;
 
 public class List_Quiz extends AppCompatActivity {
     String[] menuItem = {"Buah - buahan","Binatang","keluarga","Tumbuhan","Anggota badan","Alat sekolah"};
@@ -30,6 +29,7 @@ public class List_Quiz extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setLogo(R.mipmap.icon);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         CostumListAdapater adapter = new CostumListAdapater(this, menuItem, menuImage);
         listView = (ListView)findViewById(R.id.mobilelist);
@@ -40,8 +40,8 @@ public class List_Quiz extends AppCompatActivity {
                 Intent intent = null;
                 if (position == 0)
                 {
-                    intent = new Intent(parent.getContext(), CobaQuiz.class);
-                    startActivity(intent);
+                   //intent = new Intent(parent.getContext(), CobaQuiz.class);
+                    //startActivity(intent);
                 }
                 else if (position == 1)
                 {

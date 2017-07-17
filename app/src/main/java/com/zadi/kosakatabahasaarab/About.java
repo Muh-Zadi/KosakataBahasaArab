@@ -17,6 +17,7 @@ public class About extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setLogo(R.mipmap.icon);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         String url = "file:///android_asset/www/about.html";//Pendefinisian URL
         WebView view = (WebView)findViewById(R.id.webView1);//sinkronisasi object berdasarkan id

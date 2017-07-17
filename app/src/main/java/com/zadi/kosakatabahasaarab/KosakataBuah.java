@@ -36,7 +36,7 @@ import java.util.HashMap;
 
 
 public class KosakataBuah extends AppCompatActivity {
-    public static String url = "http://192.168.1.13/kosakata/getdata_buah.php";
+    public static String url = "http://192.168.43.228/kosakata/getdata_buah.php";
     private TextView  txtIndo, txtArab;
     private RecyclerView listRecycleView;
     private RequestQueue requestQueue;
@@ -55,6 +55,7 @@ public class KosakataBuah extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setLogo(R.mipmap.icon);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         listRecycleView = (RecyclerView)findViewById(R.id.listRecycleView);
         imgs=(ImageView) findViewById(R.id.imgViewOne);

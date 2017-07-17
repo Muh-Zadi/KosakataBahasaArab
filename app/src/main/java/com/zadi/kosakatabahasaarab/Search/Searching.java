@@ -1,5 +1,6 @@
 package com.zadi.kosakatabahasaarab.Search;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,8 +9,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.zadi.kosakatabahasaarab.R;
 import com.zadi.kosakatabahasaarab.Search.MySQL.SenderReceiver;
@@ -19,7 +23,7 @@ public class Searching extends AppCompatActivity {
     SearchView sv;
     ImageView noDataImg, noNetworkImg;
 
-    String urlAddress="http://192.168.1.13/android_search/searcher.php";
+    String urlAddress="http://192.168.43.228/android_search/searcher.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

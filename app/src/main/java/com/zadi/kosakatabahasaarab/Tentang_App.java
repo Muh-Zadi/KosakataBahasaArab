@@ -18,6 +18,7 @@ public class Tentang_App extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setLogo(R.mipmap.icon);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         txt=(TextView)findViewById(R.id.txt1);
         //	txt2 = (TextView)findViewById(R.id.txt2);
         txt.setText("\t\tAplikasi ini di buat untuk anak-anak"

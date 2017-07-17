@@ -42,9 +42,9 @@ public class SenderReceiver extends AsyncTask<Void,Void,String> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        pd=new ProgressDialog(c);
-        pd.setTitle("Search");
-        pd.setMessage("Searching...Please wait");
+       pd=new ProgressDialog(c);
+        pd.setTitle("Cari");
+        pd.setMessage("Mohon tunggu...");
         pd.show();
     }
 
@@ -56,7 +56,7 @@ public class SenderReceiver extends AsyncTask<Void,Void,String> {
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
-        pd.dismiss();
+       pd.dismiss();
 
         rv.setAdapter(null);
 

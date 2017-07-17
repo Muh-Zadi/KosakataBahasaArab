@@ -28,7 +28,6 @@ public class Parser extends AsyncTask<Void, Void, Integer> {
         this.data = data;
         this.rv = rv;
         this.c = c;
-        //ArrayList<HashMap<String, String>> names = new ArrayList<HashMap<String, String>>();
     }
 
     @Override

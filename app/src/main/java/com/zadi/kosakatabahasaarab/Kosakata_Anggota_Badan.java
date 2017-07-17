@@ -38,7 +38,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Kosakata_Anggota_Badan extends AppCompatActivity{
-    String url = "http://192.168.1.13/kosakata/getdata_anggotabadan.php";
+    String url = "http://192.168.43.228/kosakata/getdata_anggotabadan.php";
     private ProgressDialog pDialog;
     private TextView  txtIndo, txtArab;
     private RecyclerView listRecycleView;
@@ -57,6 +57,7 @@ public class Kosakata_Anggota_Badan extends AppCompatActivity{
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setLogo(R.mipmap.icon);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
 

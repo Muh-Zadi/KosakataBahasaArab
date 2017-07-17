@@ -15,6 +15,7 @@ public class Bantuan extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setLogo(R.mipmap.icon);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         txt=(TextView)findViewById(R.id.txt1);
         txt.setText("1. Buka aplikasi\n"
                 + "2. Tekan tombol Play untuk mulai main\n"

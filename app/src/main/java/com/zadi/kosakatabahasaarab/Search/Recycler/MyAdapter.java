@@ -2,6 +2,8 @@ package com.zadi.kosakatabahasaarab.Search.Recycler;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.support.v7.widget.RecyclerView;
@@ -26,12 +28,14 @@ import java.util.HashMap;
 
 public class MyAdapter extends RecyclerView.Adapter<MyHolder>{
 private MediaPlayer mp3;
+    private AssetManager assetManager;
      Context c;
     ArrayList<HashMap<String, String>> names;
 
     public MyAdapter(Context c, ArrayList<HashMap<String, String>> names) {
         this.c = c;
         this.names = names;
+        assetManager =c.getAssets();
     }
 
     @Override
@@ -56,18 +60,27 @@ private MediaPlayer mp3;
                 final AlertDialog dialog = new AlertDialog.Builder(c).create();
                 dialog.setView(v);
                 dialog.setTitle("Hasil pencarian");
-                dialog.setIcon(R.mipmap.ic_launcher);
+                dialog.setInverseBackgroundForced(true);
+                dialog.setIcon(R.mipmap.icon);
+                //CUSTOM FONTS
+              Typeface faceIndo = Typeface.createFromAsset(assetManager, "fonts/ARNOPRO-REGULAR.OTF");
+                Typeface faceArab = Typeface.createFromAsset(assetManager, "fonts/MAJALLA.TTF");
+                txtIndo.setTypeface(faceIndo);
+                btnArab.setTypeface(faceArab);
+
                 Glide.with(c)
-                        .load("http://192.168.1.13/kosakata/images/" + names.get(position).get("image"))
+                        .load("http://192.168.43.228/kosakata/images/" + names.get(position).get("image"))
                         .crossFade()
                         .placeholder(R.mipmap.no_available)
                         .into(zoomImage);
                 txtIndo.setText(names.get(position).get("indonesia"));
                 btnArab.setText(Html.fromHtml(names.get(position).get("arab")));
+
+
                 btnArab.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        final String voice = "http://192.168.1.13/kosakata/voices/" + names.get(position).get("voice");
+                        final String voice = "http://192.168.43.228/kosakata/voices/" + names.get(position).get("voice");
                         mp3 = new MediaPlayer();
                         mp3.setAudioStreamType(AudioManager.STREAM_MUSIC);
                         try{
