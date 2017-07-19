@@ -16,7 +16,6 @@ public class About extends AppCompatActivity {
         setContentView(R.layout.activity__about);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setLogo(R.mipmap.icon);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         String url = "file:///android_asset/www/about.html";//Pendefinisian URL

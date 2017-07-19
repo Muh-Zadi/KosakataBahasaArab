@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -47,6 +48,7 @@ public class Kosakata_Anggota_Badan extends AppCompatActivity{
     private ImageView imgs;
     private Typeface faceArab, faceIndo;
     static final int tampil_error=1;
+    MediaPlayer error;
 
     ArrayList<HashMap<String, String>> list_data;
 
@@ -56,7 +58,6 @@ public class Kosakata_Anggota_Badan extends AppCompatActivity{
         setContentView(R.layout.activity_kosakata);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setLogo(R.mipmap.icon);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
@@ -122,7 +123,10 @@ public class Kosakata_Anggota_Badan extends AppCompatActivity{
         });
         requestQueue.add(stringRequest);
     }else {
-        showDialog(tampil_error);
+           // error =MediaPlayer.create(Kosakata_Anggota_Badan.this, R.raw.koneksi);
+            //error.setLooping(false);
+           // error.start();
+       showDialog(tampil_error);
     }
     }
     //Splash yang di gunakan untuk mengambil data dari server

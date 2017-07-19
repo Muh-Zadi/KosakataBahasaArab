@@ -19,7 +19,11 @@
     <string name="title_activity_menu_kosakata">Kategori Kosakata</string>
     <string name="title_activity_tentang_app">Tentang Aplikasik</string>
     <string name="title_activity_aboutt">Aku dan AKNS</string>
-    <string name="title_activity_quiz__buah">Quiz Buah - buahan</string>
+    <string name="title_activity_quiz_buah">Quiz Buah - buahan</string>
     <string name="title_activity_searching">Pencarian</string>
-    <string name="title_activity_quiz">Quiz</string>
+    <string name="title_activity_quiz_binatang">Quiz Binatang</string>
+    <string name="title_activity_quiz_tumbuhan">Quiz Tumbuh-tumbuhan</string>
+    <string name="title_activity_quiz_anggotabadan">Quiz Anggota Badan</string>
+    <string name="title_activity_quiz_keluarga">Quiz Keluarga</string>
+    <string name="title_activity_quiz_alatsekolah">Quiz Alat Sekolah</string>
 </resources>

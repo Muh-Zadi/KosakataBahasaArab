@@ -8,7 +8,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.zadi.kosakatabahasaarab.quiz.Quiz;
+import com.zadi.kosakatabahasaarab.quiz.QuizAlatSekolah;
+import com.zadi.kosakatabahasaarab.quiz.QuizAnggotaBadan;
+import com.zadi.kosakatabahasaarab.quiz.QuizBuah;
+import com.zadi.kosakatabahasaarab.quiz.QuizBinatang;
+import com.zadi.kosakatabahasaarab.quiz.QuizKeluarga;
+import com.zadi.kosakatabahasaarab.quiz.QuizTumbuhan;
 
 
 public class List_Quiz extends AppCompatActivity {
@@ -30,7 +35,6 @@ public class List_Quiz extends AppCompatActivity {
         setContentView(R.layout.activity_list__quiz);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setLogo(R.mipmap.icon);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         CostumListAdapater adapter = new CostumListAdapater(this, menuItem, menuImage);
@@ -42,28 +46,33 @@ public class List_Quiz extends AppCompatActivity {
                 Intent intent = null;
                 if (position == 0)
                 {
-                   intent = new Intent(parent.getContext(), Quiz.class);
+                   intent = new Intent(parent.getContext(), QuizBuah.class);
                     startActivity(intent);
                 }
                 else if (position == 1)
                 {
-                    // intent = new Intent(parent.getContext(), Quiz2.class);                    	startActivity(intent);
+                    intent = new Intent(parent.getContext(), QuizBinatang.class);
+                    startActivity(intent);
                 }
                 else if (position == 2)
                 {
-                    // intent = new Intent(parent.getContext(), Quiz3.class);                    	startActivity(intent);
+                     intent = new Intent(parent.getContext(), QuizKeluarga.class);
+                    startActivity(intent);
                 }
                 else if (position == 3)
                 {
-                    // intent = new Intent(parent.getContext(), Quiz4.class);                    	startActivity(intent);
+                     intent = new Intent(parent.getContext(), QuizTumbuhan.class);
+                    startActivity(intent);
                 }
                 else if (position == 4)
                 {
-                    // intent = new Intent(parent.getContext(), Quiz5.class);                   	startActivity(intent);
+                    intent = new Intent(parent.getContext(), QuizAnggotaBadan.class);
+                    startActivity(intent);
                 }
                 else if (position == 5)
                 {
-                    // intent = new Intent(parent.getContext(), Quiz6.class);                   	startActivity(intent);
+                     intent = new Intent(parent.getContext(), QuizAlatSekolah.class);
+                     startActivity(intent);
                 }
 
 

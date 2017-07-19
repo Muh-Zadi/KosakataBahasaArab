@@ -7,7 +7,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -134,8 +134,28 @@
                 android:value=".Menu_Awal" />
         </activity>
         <activity
-            android:name=".quiz.Quiz"
-            android:label="@string/title_activity_quiz"
+            android:name=".quiz.QuizBuah"
+            android:label="@string/title_activity_quiz_buah"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".quiz.QuizBinatang"
+            android:label="@string/title_activity_quiz_binatang"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".quiz.QuizKeluarga"
+            android:label="@string/title_activity_quiz_keluarga"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".quiz.QuizAlatSekolah"
+            android:label="@string/title_activity_quiz_alatsekolah"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".quiz.QuizTumbuhan"
+            android:label="@string/title_activity_quiz_tumbuhan"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".quiz.QuizAnggotaBadan"
+            android:label="@string/title_activity_quiz_anggotabadan"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

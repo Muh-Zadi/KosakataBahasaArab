@@ -54,7 +54,6 @@ public class KosakataBuah extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setLogo(R.mipmap.icon);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         listRecycleView = (RecyclerView)findViewById(R.id.listRecycleView);

@@ -4,6 +4,7 @@ package com.zadi.kosakatabahasaarab.quiz;
  * Created by Muh. Zadi on 6/18/2017.
  */
 
+import android.support.v7.appcompat.BuildConfig;
 import android.util.Log;
 
 import java.io.InputStream;

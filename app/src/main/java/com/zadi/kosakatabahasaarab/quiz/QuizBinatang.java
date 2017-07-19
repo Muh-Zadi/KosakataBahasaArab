@@ -1,23 +1,12 @@
 package com.zadi.kosakatabahasaarab.quiz;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -27,11 +16,8 @@ import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.textservice.TextInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -41,10 +27,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
-
 import com.zadi.kosakatabahasaarab.R;
 
-public class Quiz extends AppCompatActivity {
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+public class QuizBinatang extends AppCompatActivity {
 
     TextView txtNama, txtNo, txtWaktu, txtSoal;
     Button btnPrev, btnSelesai, btnNext;
@@ -60,7 +55,7 @@ public class Quiz extends AppCompatActivity {
     JSONArray soal = null;
     CounterClass mCountDownTimer;
     private ProgressDialog pDialog;
-    private static String url = "http://192.168.43.228/kosakata/quiz/soal.php";
+    private static String url = "http://192.168.43.228/kosakata/quiz/soal_binatang.php";
     private static final String TAG_DAFTAR = "daftar_soal";
     private static final String TAG_ID = "soal_id";
     private static final String TAG_SOAL = "soal";
@@ -94,6 +89,13 @@ public class Quiz extends AppCompatActivity {
         rb3 = (RadioButton) findViewById(R.id.radio2);
         rb4 = (RadioButton) findViewById(R.id.radio3);
 
+        //CUSTOM FONT ARAB
+        Typeface rb = Typeface.createFromAsset(getAssets(), "fonts/MAJALLA.TTF");
+        rb1.setTypeface(rb);
+        rb2.setTypeface(rb);
+        rb3.setTypeface(rb);
+        rb4.setTypeface(rb);
+
         //action
         btnSelesai.setOnClickListener(klikSelesai);
         btnPrev.setOnClickListener(klikSebelum);
@@ -107,11 +109,11 @@ public class Quiz extends AppCompatActivity {
         final AlertDialog dialog = new AlertDialog.Builder(this).create();
         dialog.setView(v);
         dialog.setTitle("Isikan Nama Anda");
-        dialog.setIcon(R.mipmap.ic_launcher);
+        dialog.setIcon(R.mipmap.iconquiz);
         dialog.setCancelable(false);
         final Button btnOk = (Button) v.findViewById(R.id.btnOk);
         inputNama = (EditText) v.findViewById(R.id.inputID);
-        btnOk.setOnClickListener(new View.OnClickListener() {
+        btnOk.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -137,7 +139,7 @@ public class Quiz extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             // Showing progress dialog
-            pDialog = new ProgressDialog(Quiz.this);
+            pDialog = new ProgressDialog(QuizBinatang.this);
             pDialog.setMessage("Please wait...");
             pDialog.setCancelable(false);
             pDialog.show();
@@ -201,9 +203,9 @@ public class Quiz extends AppCompatActivity {
                 pDialog.dismiss();
 
             jawabanYgDiPilih = new int[listSoal.size()];
-            java.util.Arrays.fill(jawabanYgDiPilih, -1);
+            Arrays.fill(jawabanYgDiPilih, -1);
             jawabanYgBenar = new int[listSoal.size()];
-            java.util.Arrays.fill(jawabanYgBenar, -1);
+            Arrays.fill(jawabanYgBenar, -1);
             setUpSoal();
         }
     }
@@ -235,9 +237,8 @@ public class Quiz extends AppCompatActivity {
             rb4.setTextColor(Color.WHITE);
             Picasso.with(getApplicationContext())
                     .load("http://192.168.43.228/kosakata/quiz/images/"+ listSoal.get(urutan_soal_soal).getGambar())
-                    .error(R.mipmap.ic_launcher)
+                    .error(R.mipmap.no_available)
                     .into(img);
-            // imageLoader.DisplayImage(soal.getGambar(), img);
             rb1.setText(Html.fromHtml(soal.getA()));
             rb2.setText(Html.fromHtml(soal.getB()));
             rb3.setText(Html.fromHtml(soal.getC()));
@@ -314,11 +315,10 @@ public class Quiz extends AppCompatActivity {
                         jumlahJawabanYgBenar++;
                 }
                 AlertDialog tampilKotakAlert;
-                tampilKotakAlert = new AlertDialog.Builder(Quiz.this)
-                        .create();
+                tampilKotakAlert = new AlertDialog.Builder(QuizBinatang.this).create();
                 tampilKotakAlert.setTitle("Hasil");
                 tampilKotakAlert.setCancelable(false);
-                tampilKotakAlert.setIcon(R.mipmap.ic_launcher);
+                tampilKotakAlert.setIcon(R.mipmap.iconquiz);
                 tampilKotakAlert.setMessage("Benar " + jumlahJawabanYgBenar + " dari " + (listSoal.size() + " Soal \n\n\n" +"Score Anda "+ jumlahJawabanYgBenar * 10));
 
                 tampilKotakAlert.setButton(AlertDialog.BUTTON_NEUTRAL, "Lagi",
@@ -326,7 +326,7 @@ public class Quiz extends AppCompatActivity {
 
                             public void onClick(DialogInterface dialog, int which) {
                                 mCountDownTimer.cancel();
-                                java.util.Arrays.fill(jawabanYgDiPilih, -1);
+                                Arrays.fill(jawabanYgDiPilih, -1);
                                 cekPertanyaan = false;
                                 urutanPertanyaan = 0;
                                 tunjukanPertanyaan(0, cekPertanyaan);

@@ -14,13 +14,13 @@ public class Bantuan extends AppCompatActivity {
         setContentView(R.layout.activity_tentang__app__dan__bantuan);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setLogo(R.mipmap.icon);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         txt=(TextView)findViewById(R.id.txt1);
         txt.setText("1. Buka aplikasi\n"
                 + "2. Tekan tombol Play untuk mulai main\n"
-                + "3. Pilih tombol Kosakata_Alat_Sekolah untuk belajar kosakata setelahnya pilih kategori kosaka yang cocok untuk anda\n"
-                + "4. Pilih tombol Quiz untuk menguji kekuatan ingatan anda (soal-soal)");
+                + "3. Pilih tombol Kosakata untuk belajar kosakata setelahnya pilih kategori kosaka yang cocok untuk anda\n"
+                + "4. Pilih tombol QuizBuah untuk menguji kekuatan ingatan anda (soal-soal)\n"
+                + "5. Pilih icon pencarian di pojok kanan sebelah kiri menu bar untuk mencari kata yang diinginkan");
 
         Typeface face = Typeface.createFromAsset(getAssets(), "fonts/ARNOPRO-REGULAR.OTF");
         txt.setTypeface(face);

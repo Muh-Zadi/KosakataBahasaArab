@@ -56,7 +56,6 @@ public class Kosakata_Tumbuhan extends AppCompatActivity{
         setContentView(R.layout.activity_kosakata);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setLogo(R.mipmap.icon);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
