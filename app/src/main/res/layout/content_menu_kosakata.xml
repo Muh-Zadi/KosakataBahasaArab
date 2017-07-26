@@ -9,16 +9,17 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.zadi.kosakatabahasaarab.MenuKosakata"
     tools:showIn="@layout/activity_menu_kosakata">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:gravity="center" >
+            android:gravity="center">
 
             <ImageButton
                 android:id="@+id/buah_buahan"
@@ -43,7 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:gravity="center" >
+            android:gravity="center">
 
             <ImageButton
                 android:id="@+id/tumbuhan"
@@ -68,7 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:gravity="center" >
+            android:gravity="center">
 
             <ImageButton
                 android:id="@+id/anggota_badan"
@@ -88,5 +89,10 @@
                 android:onClick="click_alat_sekolah"
                 android:src="@mipmap/kategori_alat_sekolah" />
         </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp" />
     </LinearLayout>
 </ScrollView>

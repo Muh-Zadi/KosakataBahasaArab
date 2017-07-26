@@ -10,15 +10,18 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -30,11 +33,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -48,7 +53,8 @@ public class Kosakata_Anggota_Badan extends AppCompatActivity{
     private ImageView imgs;
     private Typeface faceArab, faceIndo;
     static final int tampil_error=1;
-    MediaPlayer error;
+    MediaPlayer mp3;
+    private final int play_voice = 2000;
 
     ArrayList<HashMap<String, String>> list_data;
 
@@ -107,6 +113,18 @@ public class Kosakata_Anggota_Badan extends AppCompatActivity{
                         map.put("voice", json.getString("voice"));
                         map.put("category", json.getString("category"));
                         list_data.add(map);
+
+
+                        //memasukkan data index ke 0 pada saat item kosakata di tampilkan
+                        Glide.with(getApplicationContext())
+                                .load("http://192.168.43.228/kosakata/images/" + list_data.get(0).get("image"))
+                                .crossFade()
+                                .placeholder(R.mipmap.no_available)
+                                .into(imgs);
+                        txtIndo.setText(list_data.get(0).get("indonesia"));
+                        txtArab.setText(Html.fromHtml(list_data.get(0).get("arab")));
+
+
                         AdapterList_Anggota_Badan adapter =  new AdapterList_Anggota_Badan(Kosakata_Anggota_Badan.this, list_data, imgs,txtIndo,txtArab);
                         listRecycleView.setAdapter(adapter);
                     }
@@ -123,21 +141,20 @@ public class Kosakata_Anggota_Badan extends AppCompatActivity{
         });
         requestQueue.add(stringRequest);
     }else {
-           // error =MediaPlayer.create(Kosakata_Anggota_Badan.this, R.raw.koneksi);
-            //error.setLooping(false);
-           // error.start();
+           // Saat tidak ada koneksi internet
        showDialog(tampil_error);
     }
+
     }
     //Splash yang di gunakan untuk mengambil data dari server
     class PrefechData extends AsyncTask<Void, Void, Void> {
         ProgressDialog progress = new ProgressDialog(Kosakata_Anggota_Badan.this);
 
         public PrefechData(){
-            progress.setTitle(Kosakata_Anggota_Badan.this.getString(R.string.app_name));
+            progress.setTitle(Kosakata_Anggota_Badan.this.getString(R.string.loading));
             progress.setCancelable(false);
             progress.setCanceledOnTouchOutside(false);
-            progress.setMessage("Please wait...");
+            progress.setMessage("Mohon tunggu...");
         }
 
         @Override
@@ -156,9 +173,13 @@ public class Kosakata_Anggota_Badan extends AppCompatActivity{
         protected void onPostExecute(Void result) {
             if(progress.isShowing()){
                 progress.dismiss();
-                imgs.setImageResource(R.mipmap.bibir_awal);
-                txtIndo.setText("Bibir");
-                txtArab.setText("شَفَة");
+                //setelah data terkumpul dan progrees selesai dua detik dari itu suara akan play
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        playsound();
+                    }
+                },play_voice);
                 super.onPostExecute(result);
             }
         }
@@ -175,12 +196,7 @@ public class Kosakata_Anggota_Badan extends AppCompatActivity{
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
-                        Intent exit = new Intent(Intent.ACTION_MAIN);
-                        exit.addCategory(Intent.CATEGORY_HOME);
-                        exit.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         Kosakata_Anggota_Badan.this.finish();
-                        //startActivity(exit);
-
                     }
                 }).show();
                 AlertDialog errorAlert = errorDialog.create();
@@ -190,4 +206,31 @@ public class Kosakata_Anggota_Badan extends AppCompatActivity{
         }
         return dialog;
     }
+
+    @Override
+    protected void onPause() {
+        try{
+            super.onPause();
+            mp3.pause();
+            mp3.stop();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    private void playsound(){
+        try{
+            if (mp3.isPlaying()){
+                mp3.stop();
+                mp3.release();
+            }
+        }catch(Exception e){
+        }
+
+        mp3=MediaPlayer.create(this, R.raw.bibir);
+        mp3.setLooping(false);
+        mp3.start();
+
+    }
+
 }

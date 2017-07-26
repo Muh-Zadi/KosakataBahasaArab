@@ -112,6 +112,7 @@ public class QuizAlatSekolah extends AppCompatActivity {
         dialog.setIcon(R.mipmap.iconquiz);
         dialog.setCancelable(false);
         final Button btnOk = (Button) v.findViewById(R.id.btnOk);
+        final Button btnCancel = (Button)v.findViewById(R.id.btnCancel);
         inputNama = (EditText) v.findViewById(R.id.inputID);
         btnOk.setOnClickListener(new OnClickListener() {
 
@@ -126,6 +127,12 @@ public class QuizAlatSekolah extends AppCompatActivity {
                     dialog.dismiss();
                 }
 
+            }
+        });
+        btnCancel.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                QuizAlatSekolah.this.finish();
             }
         });
 
@@ -216,7 +223,10 @@ public class QuizAlatSekolah extends AppCompatActivity {
     }
 
     private void tunjukanPertanyaan(int urutan_soal_soal, boolean review) {
-        btnSelesai.setEnabled(false);
+        if (urutan_soal_soal != listSoal.size()){
+            btnSelesai.setTextColor(getResources().getColor(R.color.red));
+            btnSelesai.setEnabled(false);
+        }
         if(urutan_soal_soal == 0)
             setUpWaktu();
 
@@ -257,18 +267,23 @@ public class QuizAlatSekolah extends AppCompatActivity {
             pasangLabelDanNomorUrut();
 
             if (urutan_soal_soal == (listSoal.size() - 1)) {
-                btnNext.setEnabled(false);
                 btnSelesai.setEnabled(true);
+                btnSelesai.setTextColor(getResources().getColor(R.color.white));
+                btnNext.setTextColor(getResources().getColor(R.color.red));
+                btnNext.setEnabled(false);
             }
-
             if (urutan_soal_soal == 0)
-                btnPrev.setEnabled(false);
+                btnPrev.setTextColor(getResources().getColor(R.color.red));
+            btnPrev.setEnabled(false);
+
 
             if (urutan_soal_soal > 0)
-                btnPrev.setEnabled(true);
+                btnPrev.setTextColor(getResources().getColor(R.color.white));
+            btnPrev.setEnabled(true);
 
             if (urutan_soal_soal < (listSoal.size() - 1))
-                btnNext.setEnabled(true);
+                btnNext.setTextColor(getResources().getColor(R.color.white));
+            btnNext.setEnabled(true);
 
             if (review) {
                 mCountDownTimer.cancel();

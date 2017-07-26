@@ -113,6 +113,7 @@ public class QuizBuah extends AppCompatActivity {
         dialog.setIcon(R.mipmap.iconquiz);
         dialog.setCancelable(false);
         final Button btnOk = (Button) v.findViewById(R.id.btnOk);
+        final Button btnCancel = (Button)v.findViewById(R.id.btnCancel);
         inputNama = (EditText) v.findViewById(R.id.inputID);
         btnOk.setOnClickListener(new View.OnClickListener() {
 
@@ -129,6 +130,12 @@ public class QuizBuah extends AppCompatActivity {
 
             }
         });
+        btnCancel.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                QuizBuah.this.finish();
+            }
+        });
 
         dialog.show();
 
@@ -141,7 +148,7 @@ public class QuizBuah extends AppCompatActivity {
             super.onPreExecute();
             // Showing progress dialog
             pDialog = new ProgressDialog(QuizBuah.this);
-            pDialog.setMessage("Please wait...");
+            pDialog.setMessage("Mohon tunggu...");
             pDialog.setCancelable(false);
             pDialog.show();
 
@@ -217,7 +224,11 @@ public class QuizBuah extends AppCompatActivity {
     }
 
     private void tunjukanPertanyaan(int urutan_soal_soal, boolean review) {
-        btnSelesai.setEnabled(false);
+
+        if (urutan_soal_soal != listSoal.size()){
+            btnSelesai.setTextColor(getResources().getColor(R.color.red));
+            btnSelesai.setEnabled(false);
+        }
         if(urutan_soal_soal == 0)
             setUpWaktu();
 
@@ -258,18 +269,23 @@ public class QuizBuah extends AppCompatActivity {
             pasangLabelDanNomorUrut();
 
             if (urutan_soal_soal == (listSoal.size() - 1)) {
-                btnNext.setEnabled(false);
                 btnSelesai.setEnabled(true);
+                btnSelesai.setTextColor(getResources().getColor(R.color.white));
+                btnNext.setTextColor(getResources().getColor(R.color.red));
+                btnNext.setEnabled(false);
             }
-
             if (urutan_soal_soal == 0)
-                btnPrev.setEnabled(false);
+                btnPrev.setTextColor(getResources().getColor(R.color.red));
+            btnPrev.setEnabled(false);
+
 
             if (urutan_soal_soal > 0)
-                btnPrev.setEnabled(true);
+            btnPrev.setTextColor(getResources().getColor(R.color.white));
+            btnPrev.setEnabled(true);
 
             if (urutan_soal_soal < (listSoal.size() - 1))
-                btnNext.setEnabled(true);
+            btnNext.setTextColor(getResources().getColor(R.color.white));
+            btnNext.setEnabled(true);
 
             if (review) {
                 mCountDownTimer.cancel();
@@ -327,7 +343,7 @@ public class QuizBuah extends AppCompatActivity {
 
                             public void onClick(DialogInterface dialog, int which) {
                                 mCountDownTimer.cancel();
-                                java.util.Arrays.fill(jawabanYgDiPilih, -1);
+                               java.util.Arrays.fill(jawabanYgDiPilih, -1);
                                 cekPertanyaan = false;
                                 urutanPertanyaan = 0;
                                 tunjukanPertanyaan(0, cekPertanyaan);

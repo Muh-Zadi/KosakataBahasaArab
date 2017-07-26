@@ -45,7 +45,7 @@ public class SenderReceiver extends AsyncTask<Void,Void,String> {
        pd=new ProgressDialog(c);
         pd.setTitle("Cari");
         pd.setMessage("Mohon tunggu...");
-        pd.show();
+       // pd.show();
     }
 
     @Override

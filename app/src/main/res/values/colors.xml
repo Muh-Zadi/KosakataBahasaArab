@@ -14,4 +14,6 @@
     <color name="black">#000000</color>
     <color name="red">#FF0000</color>
     <color name="yellow">#FFFF00</color>
+    <color name="royalBlue">#4169E1</color>
+    <color name="WhiteSmoke">#F5F5F5</color>
 </resources>

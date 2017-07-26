@@ -38,6 +38,8 @@ public class Searching extends AppCompatActivity {
         noDataImg= (ImageView)findViewById(R.id.nodataImg);
         noNetworkImg = (ImageView)findViewById(R.id.noserver);
 
+
+
         sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {

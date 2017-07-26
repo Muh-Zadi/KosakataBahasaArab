@@ -5,7 +5,6 @@ import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 import com.zadi.kosakatabahasaarab.Search.Recycler.MyAdapter;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -63,8 +62,6 @@ public class Parser extends AsyncTask<Void, Void, Integer> {
                 map.put("image", jo.getString("image"));
                 map.put("voice", jo.getString("voice"));
                 map.put("category", jo.getString("category"));
-               // list_data.add(map);
-                //String name=jo.getString("indonesia");
                 names.add(map);
             }
 

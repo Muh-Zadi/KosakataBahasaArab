@@ -76,12 +76,30 @@ private MediaPlayer mp3;
                 txtIndo.setText(names.get(position).get("indonesia"));
                 btnArab.setText(Html.fromHtml(names.get(position).get("arab")));
 
+                //VOICE langsung mulai saat detail kosakata tampil
+                final String voice = "http://192.168.43.228/kosakata/voices/" + names.get(position).get("voice");
+                mp3 = new MediaPlayer();
+                mp3.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                try{
+                    mp3.setDataSource(voice);
+                    mp3.prepare();
+                }catch (IllegalArgumentException e){
+                    e.printStackTrace();
+                }catch (SecurityException e){
+                    e.printStackTrace();
+                }catch (IllegalStateException e){
+                    e.printStackTrace();
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
+                mp3.start();
+
 
                 btnArab.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        final String voice = "http://192.168.43.228/kosakata/voices/" + names.get(position).get("voice");
-                        mp3 = new MediaPlayer();
+                       /*/ final String voice = "http://192.168.43.228/kosakata/voices/" + names.get(position).get("voice");
+                        */mp3 = new MediaPlayer();
                         mp3.setAudioStreamType(AudioManager.STREAM_MUSIC);
                         try{
                             mp3.setDataSource(voice);
@@ -96,9 +114,11 @@ private MediaPlayer mp3;
                             e.printStackTrace();
                         }
                         mp3.start();
+
                     }
                 });
                 dialog.show();
+
             }
         });
 

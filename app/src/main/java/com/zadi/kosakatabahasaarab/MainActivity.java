@@ -16,8 +16,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
-        //getActionBar().hide();
         setContentView(R.layout.splash);
         //Membuat animasi
         View a = (View)findViewById(R.id.animasi);
@@ -55,9 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 mp3.release();
             }
         }catch(Exception e){
-            //Toast.makeText(this, "Masuk Exception", Toast.LENGTH_LONG).show();
         }
-
         mp3=MediaPlayer.create(this, R.raw.ajakan);
         mp3.setLooping(false);
         mp3.start();

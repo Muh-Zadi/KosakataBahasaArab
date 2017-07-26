@@ -91,4 +91,5 @@ public class AdapterList_Alat_Sekolah extends RecyclerView.Adapter<AdapterList_A
             listImage = (ImageView) itemView.findViewById(R.id.listImage);
         }
     }
+
 }
