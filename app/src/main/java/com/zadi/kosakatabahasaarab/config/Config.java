@@ -17,7 +17,7 @@ public class Config {
     public static final String url_soal_binatang = SERVER_API + "quiz/soal_binatang.php";
     public static final String url_soal_anggota_badan = SERVER_API + "quiz/soal_anggota_badan.php";
     public static final String url_soal_alatSekolah = SERVER_API + "quiz/soal_alat_sekolah.php";
-    public static final String url_soal_keluarga = SERVER_API + "quiz/soal_keluargas.php";
+    public static final String url_soal_keluarga = SERVER_API + "quiz/soal_keluarga.php";
     public static final String url_search = SERVER_API + "Search/searcher.php";
     /*public static final String TAG_ID = SERVER_API + "id_kosakata";
     public static final String TAG_INDONESIA = SERVER_API + "indonesia";
