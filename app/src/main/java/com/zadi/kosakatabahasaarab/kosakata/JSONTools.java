@@ -1,4 +1,4 @@
-package com.zadi.kosakatabahasaarab;
+package com.zadi.kosakatabahasaarab.kosakata;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;

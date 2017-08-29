@@ -2,22 +2,26 @@ package com.zadi.kosakatabahasaarab;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-public class MenuKosakata extends AppCompatActivity {
+import com.zadi.kosakatabahasaarab.kosakata.KosakataAlatSekolah;
+import com.zadi.kosakatabahasaarab.kosakata.KosakataBuah;
+import com.zadi.kosakatabahasaarab.kosakata.Kosakata_Anggota_Badan;
+import com.zadi.kosakatabahasaarab.kosakata.Kosakata_Binatang;
+import com.zadi.kosakatabahasaarab.kosakata.Kosakata_Keluarga;
+import com.zadi.kosakatabahasaarab.kosakata.Kosakata_Tumbuhan;
+
+public class KategoriKosakata extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_menu_kosakata);
+        setContentView(R.layout.activity_kategori_kosakata);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-       // toolbar.setLogo(R.mipmap.icon);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }

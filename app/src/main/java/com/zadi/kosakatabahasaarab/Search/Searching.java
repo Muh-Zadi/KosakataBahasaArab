@@ -17,13 +17,13 @@ import android.widget.TextView;
 
 import com.zadi.kosakatabahasaarab.R;
 import com.zadi.kosakatabahasaarab.Search.MySQL.SenderReceiver;
+import com.zadi.kosakatabahasaarab.config.Config;
 
 public class Searching extends AppCompatActivity {
     RecyclerView rv;
     SearchView sv;
     ImageView noDataImg, noNetworkImg;
 
-    String urlAddress="http://192.168.43.228/android_search/searcher.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +48,11 @@ public class Searching extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String query) {
-                SenderReceiver sr=new SenderReceiver(Searching.this,query,urlAddress,rv,noDataImg,noNetworkImg);
+                SenderReceiver sr=new SenderReceiver(Searching.this,query, Config.url_search,rv,noDataImg,noNetworkImg);
 
                 sr.execute();
                 return false;
+
             }
         });
 

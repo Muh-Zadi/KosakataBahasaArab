@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.zadi.kosakatabahasaarab.R;
+import com.zadi.kosakatabahasaarab.config.Config;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -69,7 +70,7 @@ private MediaPlayer mp3;
                 btnArab.setTypeface(faceArab);
 
                 Glide.with(c)
-                        .load("http://192.168.43.228/kosakata/images/" + names.get(position).get("image"))
+                        .load(Config.TAG_IMAGES_KOSAKATA + names.get(position).get("image"))
                         .crossFade()
                         .placeholder(R.mipmap.no_available)
                         .into(zoomImage);
@@ -77,7 +78,7 @@ private MediaPlayer mp3;
                 btnArab.setText(Html.fromHtml(names.get(position).get("arab")));
 
                 //VOICE langsung mulai saat detail kosakata tampil
-                final String voice = "http://192.168.43.228/kosakata/voices/" + names.get(position).get("voice");
+                final String voice = Config.TAG_VOICES + names.get(position).get("voice");
                 mp3 = new MediaPlayer();
                 mp3.setAudioStreamType(AudioManager.STREAM_MUSIC);
                 try{
@@ -98,8 +99,7 @@ private MediaPlayer mp3;
                 btnArab.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                       /*/ final String voice = "http://192.168.43.228/kosakata/voices/" + names.get(position).get("voice");
-                        */mp3 = new MediaPlayer();
+                       mp3 = new MediaPlayer();
                         mp3.setAudioStreamType(AudioManager.STREAM_MUSIC);
                         try{
                             mp3.setDataSource(voice);

@@ -7,8 +7,8 @@
     android:layout_height="match_parent"
     android:background="@drawable/dsn_bg_quiz"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.zadi.kosakatabahasaarab.List_Quiz"
-    tools:showIn="@layout/activity_list__quiz">
+    tools:context="com.zadi.kosakatabahasaarab.List_Kategori_Quiz"
+    tools:showIn="@layout/activity_kategori_quiz">
 
     <TextView
         android:layout_width="match_parent"

@@ -1,5 +1,7 @@
 package com.zadi.kosakatabahasaarab;
 
+import android.content.Context;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -9,6 +11,7 @@ import android.view.Window;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
+
+        ImageButton btnPlay = (ImageButton)findViewById(R.id.btnPlay);
         //Membuat animasi
         View a = (View)findViewById(R.id.animasi);
         Animation splashAni = AnimationUtils.loadAnimation(this, R.anim.splash_anim);
@@ -29,11 +34,16 @@ public class MainActivity extends AppCompatActivity {
         txt2.setTypeface(face);
         txt3.setTypeface(face);
         playSound();
+        btnPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent panggil = new Intent(MainActivity.this, Menu_Awal.class);
+                startActivity(panggil);
+
+            }
+        });
     }
-    public void btnPlay(View v){
-        Intent panggil = new Intent(this, Menu_Awal.class);
-        startActivity(panggil);
-    }
+
         //VOICE
 
     @Override
@@ -54,8 +64,11 @@ public class MainActivity extends AppCompatActivity {
             }
         }catch(Exception e){
         }
-        mp3=MediaPlayer.create(this, R.raw.ajakan);
+        mp3=MediaPlayer.create(this, R.raw.play);
         mp3.setLooping(false);
         mp3.start();
     }
+
 }
+
+

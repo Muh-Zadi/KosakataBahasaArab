@@ -13,10 +13,14 @@ import org.json.JSONObject;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -39,6 +43,7 @@ import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 
 import com.zadi.kosakatabahasaarab.R;
+import com.zadi.kosakatabahasaarab.config.Config;
 
 public class QuizBuah extends AppCompatActivity {
 
@@ -56,16 +61,7 @@ public class QuizBuah extends AppCompatActivity {
     JSONArray soal = null;
     CounterClass mCountDownTimer;
     private ProgressDialog pDialog;
-    private static String url = "http://192.168.43.228/kosakata/quiz/soal_buah.php";
-    private static final String TAG_DAFTAR = "daftar_soal";
-    private static final String TAG_ID = "soal_id";
-    private static final String TAG_SOAL = "soal";
-    private static final String TAG_A = "a";
-    private static final String TAG_B = "b";
-    private static final String TAG_C = "c";
-    private static final String TAG_D = "d";
-    private static final String TAG_JWB = "jawaban";
-    private static final String TAG_GAMBAR = "gambar";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,8 +97,29 @@ public class QuizBuah extends AppCompatActivity {
         btnSelesai.setOnClickListener(klikSelesai);
         btnPrev.setOnClickListener(klikSebelum);
         btnNext.setOnClickListener(klikBerikut);
-        showInputUser();
+        //handle error saat tidak terkoneksi ke internet
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
+        if (networkInfo != null && networkInfo.isConnected()){
+            showInputUser();
+        }else {
+            dialog_error();
+        }
+
+    }
+    private void dialog_error(){
+        final AlertDialog.Builder errorDialog = new AlertDialog.Builder(this);
+        errorDialog.setTitle("Koneksi Error");
+        errorDialog.setMessage("Anda tidak terhubung ke internet");
+        errorDialog.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+                QuizBuah.this.finish();
+            }
+        }).show();
     }
     private void showInputUser() {
         LayoutInflater mInflater = LayoutInflater.from(this);
@@ -159,28 +176,28 @@ public class QuizBuah extends AppCompatActivity {
             // Creating service handler class instance
             ServiceHandler sh = new ServiceHandler();
             // Making a request to url and getting response
-            String jsonStr = sh.makeServiceCall(url, ServiceHandler.GET);
+            String jsonStr = sh.makeServiceCall(Config.url_soal_buah, ServiceHandler.GET);
             //   Log.d("response ", response);
             Log.d("Response: ", "> " + jsonStr);
             if (jsonStr != null) {
                 try {
                     JSONObject jsonObj = new JSONObject(jsonStr);
                     // Getting JSON Array node
-                    soal = jsonObj.getJSONArray(TAG_DAFTAR);
+                    soal = jsonObj.getJSONArray(Config.TAG_DAFTAR);
                     Soal s = null;
                     // looping through All Contacts
                     for (int i = 0; i < soal.length(); i++) {
                         JSONObject c = soal.getJSONObject(i);
                         s = new Soal();
 
-                        String id = c.getString(TAG_ID);
-                        String soal = c.getString(TAG_SOAL);
-                        String a = c.getString(TAG_A);
-                        String b = c.getString(TAG_B);
-                        String cc = c.getString(TAG_C);
-                        String d = c.getString(TAG_D);
-                        String jwb = c.getString(TAG_JWB);
-                        String gambar = c.getString(TAG_GAMBAR);
+                        String id = c.getString(Config.TAG_ID);
+                        String soal = c.getString(Config.TAG_SOAL);
+                        String a = c.getString(Config.TAG_A);
+                        String b = c.getString(Config.TAG_B);
+                        String cc = c.getString(Config.TAG_C);
+                        String d = c.getString(Config.TAG_D);
+                        String jwb = c.getString(Config.TAG_JWB);
+                        String gambar = c.getString(Config.TAG_GAMBAR);
 
                         s.setId(id);
                         s.setSoal(soal);
@@ -248,7 +265,7 @@ public class QuizBuah extends AppCompatActivity {
             rb3.setTextColor(Color.WHITE);
             rb4.setTextColor(Color.WHITE);
             Picasso.with(getApplicationContext())
-                    .load("http://192.168.43.228/kosakata/quiz/images/"+ listSoal.get(urutan_soal_soal).getGambar())
+                    .load(Config.TAG_IMAGES_QUIZ + listSoal.get(urutan_soal_soal).getGambar())
                     .error(R.mipmap.no_available)
                     .into(img);
             rb1.setText(Html.fromHtml(soal.getA()));

@@ -1,4 +1,4 @@
-package com.zadi.kosakatabahasaarab;
+package com.zadi.kosakatabahasaarab.kosakata;
 
 /**
  * Created by Muh. Zadi on 7/4/2017.
@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.zadi.kosakatabahasaarab.R;
+import com.zadi.kosakatabahasaarab.config.Config;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -44,7 +46,7 @@ public class AdapterList_Binatang extends RecyclerView.Adapter<AdapterList_Binat
 
         //Displaying to list with Recycle View
         Glide.with(context)
-                .load("http://192.168.43.228/kosakata/images/" + list_data.get(position).get("image"))
+                .load(Config.TAG_IMAGES_KOSAKATA + list_data.get(position).get("image"))
                 .crossFade()
                 .placeholder(R.mipmap.no_available)
                 .into(holder.listImage);
@@ -53,13 +55,13 @@ public class AdapterList_Binatang extends RecyclerView.Adapter<AdapterList_Binat
             @Override
             public void onClick(View view) {
                 Glide.with(context)
-                        .load("http://192.168.43.228/kosakata/images/" + list_data.get(position).get("image"))
+                        .load(Config.TAG_IMAGES_KOSAKATA + list_data.get(position).get("image"))
                         .crossFade()
                         .placeholder(R.mipmap.no_available)
                         .into(imgViewOne);
                 txtIndo.setText(list_data.get(position).get("indonesia"));
                 txtArab.setText(Html.fromHtml(list_data.get(position).get("arab")));
-                final String voice = "http://192.168.43.228/kosakata/voices/" + list_data.get(position).get("voice");
+                final String voice = Config.TAG_IMAGES_KOSAKATA + list_data.get(position).get("voice");
                 mp3 = new MediaPlayer();
                 mp3.setAudioStreamType(AudioManager.STREAM_MUSIC);
                 try{

@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context="com.zadi.kosakatabahasaarab.List_Quiz">
+    android:fitsSystemWindows="true">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -17,11 +16,12 @@
             android:layout_width="match_parent"
             android:layout_height="47dp"
             android:background="@color/orange"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            app:popupTheme="@style/AppTheme.AppBarOverlay" />
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_list__quiz" />
+    <include layout="@layout/content_item_kosakata" />
+
 
 
 </android.support.design.widget.CoordinatorLayout>

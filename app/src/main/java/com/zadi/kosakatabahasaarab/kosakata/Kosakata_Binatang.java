@@ -1,21 +1,18 @@
-package com.zadi.kosakatabahasaarab;
+package com.zadi.kosakatabahasaarab.kosakata;
 
 /**
  * Created by Muh. Zadi on 7/4/2017.
  */
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -33,6 +30,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import com.zadi.kosakatabahasaarab.R;
+import com.zadi.kosakatabahasaarab.config.Config;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,8 +40,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Kosakata_Tumbuhan extends AppCompatActivity{
-    public static String url = "http://192.168.43.228/kosakata/getdata_tumbuhan.php";
+public class Kosakata_Binatang extends AppCompatActivity{
     private ProgressDialog pDialog;
     private TextView  txtIndo, txtArab;
     private RecyclerView listRecycleView;
@@ -50,16 +48,16 @@ public class Kosakata_Tumbuhan extends AppCompatActivity{
     private StringRequest stringRequest;
     private ImageView imgs;
     private Typeface faceArab, faceIndo;
-    static final int tampil_error=1;
+
+
     MediaPlayer mp3;
-    private final int play_voice = 2000;
 
     ArrayList<HashMap<String, String>> list_data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_kosakata);
+        setContentView(R.layout.activity_item_kosakata);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -74,7 +72,7 @@ public class Kosakata_Tumbuhan extends AppCompatActivity{
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.HORIZONTAL);
         listRecycleView.setLayoutManager(llm);
-        requestQueue = Volley.newRequestQueue(Kosakata_Tumbuhan.this);
+        requestQueue = Volley.newRequestQueue(Kosakata_Binatang.this);
         list_data = new ArrayList<HashMap<String, String>>();
 
         //Costom fonts
@@ -83,7 +81,7 @@ public class Kosakata_Tumbuhan extends AppCompatActivity{
         txtArab.setTypeface(faceArab);
         txtIndo.setTypeface(faceIndo);
 
-        //handle error saat tidak terkoneksi ke internet
+//handle error saat tidak terkoneksi ke internet
         ConnectivityManager connMgr = (ConnectivityManager)
                 getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
@@ -92,7 +90,7 @@ public class Kosakata_Tumbuhan extends AppCompatActivity{
             //saat ada koneksi
 
         new PrefechData().execute();
-        stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>(){
+        stringRequest = new StringRequest(Request.Method.GET, Config.url_binatang, new Response.Listener<String>(){
 
             @Override
             public void onResponse(String response) {
@@ -114,14 +112,14 @@ public class Kosakata_Tumbuhan extends AppCompatActivity{
 
                         //memasukkan data index ke 0 pada saat item kosakata di tampilkan
                         Glide.with(getApplicationContext())
-                                .load("http://192.168.43.228/kosakata/images/" + list_data.get(0).get("image"))
+                                .load(Config.TAG_IMAGES_KOSAKATA + list_data.get(0).get("image"))
                                 .crossFade()
                                 .placeholder(R.mipmap.no_available)
                                 .into(imgs);
                         txtIndo.setText(list_data.get(0).get("indonesia"));
                         txtArab.setText(Html.fromHtml(list_data.get(0).get("arab")));
 
-                        AdapterList_Tumbuhan adapter =  new AdapterList_Tumbuhan(Kosakata_Tumbuhan.this, list_data, imgs,txtIndo,txtArab);
+                        AdapterList_Binatang adapter =  new AdapterList_Binatang(Kosakata_Binatang.this, list_data, imgs,txtIndo,txtArab);
                         listRecycleView.setAdapter(adapter);
                     }
                 }catch (JSONException e){
@@ -132,20 +130,21 @@ public class Kosakata_Tumbuhan extends AppCompatActivity{
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(Kosakata_Tumbuhan.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Kosakata_Binatang.this, "Tidak dapat menemukan server, mohon periksa ulang koneksi internet anda", Toast.LENGTH_LONG).show();
+                finish();
             }
         });
         requestQueue.add(stringRequest);
         }else {
-            showDialog(tampil_error);
+           dialog_error();
         }
     }
     //Splash yang di gunakan untuk mengambil data dari server
     class PrefechData extends AsyncTask<Void, Void, Void> {
-        ProgressDialog progress = new ProgressDialog(Kosakata_Tumbuhan.this);
+        ProgressDialog progress = new ProgressDialog(Kosakata_Binatang.this);
 
         public PrefechData(){
-            progress.setTitle(Kosakata_Tumbuhan.this.getString(R.string.loading));
+            progress.setTitle(Kosakata_Binatang.this.getString(R.string.loading));
             progress.setCancelable(false);
             progress.setCanceledOnTouchOutside(false);
             progress.setMessage("Mohon tunggu...");
@@ -159,7 +158,7 @@ public class Kosakata_Tumbuhan extends AppCompatActivity{
 
         @Override
         protected Void doInBackground(Void... params) {
-            Log.d("JSON",JSONTools.getJSON(url).toString());
+            Log.d("JSON", JSONTools.getJSON(Config.url_binatang).toString());
             return null;
         }
 
@@ -167,38 +166,23 @@ public class Kosakata_Tumbuhan extends AppCompatActivity{
         protected void onPostExecute(Void result) {
             if(progress.isShowing()){
                 progress.dismiss();
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
+
                         playsound();
-                    }
-                },play_voice);
                 super.onPostExecute(result);
             }
         }
     }
-    @Override
-    protected Dialog onCreateDialog(int id) {
-        Dialog dialog = null;
-        switch (id){
-            case tampil_error:
-                AlertDialog.Builder errorDialog = new AlertDialog.Builder(this);
-                errorDialog.setTitle("Koneksi Error");
-                errorDialog.setMessage("Anda tidak terhubung ke internet");
-                errorDialog.setNeutralButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.dismiss();
-                        Kosakata_Tumbuhan.this.finish();
-
-                    }
-                }).show();
-                AlertDialog errorAlert = errorDialog.create();
-                return errorAlert;
-            default:
-                break;
-        }
-        return dialog;
+    private void dialog_error(){
+        final AlertDialog.Builder errorDialog = new AlertDialog.Builder(this);
+        errorDialog.setTitle("Koneksi Error");
+        errorDialog.setMessage("Anda tidak terhubung ke internet");
+        errorDialog.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+                Kosakata_Binatang.this.finish();
+            }
+        }).show();
     }
     @Override
     protected void onPause() {
@@ -220,7 +204,7 @@ public class Kosakata_Tumbuhan extends AppCompatActivity{
         }catch(Exception e){
         }
 
-        mp3=MediaPlayer.create(this, R.raw.jagung);
+        mp3=MediaPlayer.create(this, R.raw.babi);
         mp3.setLooping(false);
         mp3.start();
 

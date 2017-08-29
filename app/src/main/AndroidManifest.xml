@@ -9,10 +9,10 @@
         android:allowBackup="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
-        android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
+            android:noHistory="true"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,58 +26,58 @@
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".KosakataBuah"
+            android:name=".kosakata.KosakataBuah"
             android:label="@string/title_buah"
-            android:parentActivityName=".MenuKosakata"
+            android:parentActivityName=".KategoriKosakata"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MenuKosakata" />
+                android:value=".KategoriKosakata" />
         </activity>
         <activity
-            android:name=".Kosakata_Binatang"
+            android:name=".kosakata.Kosakata_Binatang"
             android:label="@string/title_binatang"
-            android:parentActivityName=".MenuKosakata"
+            android:parentActivityName=".KategoriKosakata"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MenuKosakata" />
+                android:value=".KategoriKosakata" />
         </activity>
         <activity
-            android:name=".Kosakata_Keluarga"
+            android:name=".kosakata.Kosakata_Keluarga"
             android:label="@string/title_keluarga"
-            android:parentActivityName=".MenuKosakata"
+            android:parentActivityName=".KategoriKosakata"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MenuKosakata" />
+                android:value=".KategoriKosakata" />
         </activity>
         <activity
-            android:name=".Kosakata_Tumbuhan"
+            android:name=".kosakata.Kosakata_Tumbuhan"
             android:label="@string/title_tumbuhan"
-            android:parentActivityName=".MenuKosakata"
+            android:parentActivityName=".KategoriKosakata"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MenuKosakata" />
+                android:value=".KategoriKosakata" />
         </activity>
         <activity
-            android:name=".Kosakata_Anggota_Badan"
+            android:name=".kosakata.Kosakata_Anggota_Badan"
             android:label="@string/title_anggota_badan"
-            android:parentActivityName=".MenuKosakata"
+            android:parentActivityName=".KategoriKosakata"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MenuKosakata" />
+                android:value=".KategoriKosakata" />
         </activity>
         <activity
-            android:name=".KosakataAlatSekolah"
-            android:label="@string/title_activity_kosakata"
-            android:parentActivityName=".MenuKosakata"
+            android:name=".kosakata.KosakataAlatSekolah"
+            android:label="@string/title_alat_sekolah"
+            android:parentActivityName=".KategoriKosakata"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MenuKosakata" />
+                android:value=".KategoriKosakata" />
         </activity>
         <activity
             android:name=".About"
@@ -98,7 +98,7 @@
                 android:value=".Menu_Awal" />
         </activity>
         <activity
-            android:name=".List_Quiz"
+            android:name=".List_Kategori_Quiz"
             android:label="@string/title_activity_list__quiz"
             android:parentActivityName=".Menu_Awal"
             android:theme="@style/AppTheme.NoActionBar">
@@ -107,7 +107,7 @@
                 android:value=".Menu_Awal" />
         </activity>
         <activity
-            android:name=".MenuKosakata"
+            android:name=".KategoriKosakata"
             android:label="@string/title_activity_menu_kosakata"
             android:parentActivityName=".Menu_Awal"
             android:theme="@style/AppTheme.NoActionBar">

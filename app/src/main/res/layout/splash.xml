@@ -59,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/tranparent"
-            android:onClick="btnPlay"
+            android:id="@+id/btnPlay"
             android:src="@mipmap/play" />
     </LinearLayout>
 </LinearLayout>

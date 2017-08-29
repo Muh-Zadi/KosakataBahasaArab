@@ -16,7 +16,7 @@ import com.zadi.kosakatabahasaarab.quiz.QuizKeluarga;
 import com.zadi.kosakatabahasaarab.quiz.QuizTumbuhan;
 
 
-public class List_Quiz extends AppCompatActivity {
+public class List_Kategori_Quiz extends AppCompatActivity {
     String[] menuItem = {"Buah - buahan","Binatang","keluarga","Tumbuhan","Anggota badan","Alat sekolah"};
     Integer[] menuImage = {
             R.mipmap.apel,
@@ -32,12 +32,12 @@ public class List_Quiz extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list__quiz);
+        setContentView(R.layout.activity_kategori_quiz);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        CostumListAdapater adapter = new CostumListAdapater(this, menuItem, menuImage);
+        AdapaterListQuiz adapter = new AdapaterListQuiz(this, menuItem, menuImage);
         listView = (ListView)findViewById(R.id.mobilelist);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){

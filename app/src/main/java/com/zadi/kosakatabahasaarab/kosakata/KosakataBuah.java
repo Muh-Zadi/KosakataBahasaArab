@@ -1,18 +1,15 @@
-package com.zadi.kosakatabahasaarab;
+package com.zadi.kosakatabahasaarab.kosakata;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -30,6 +27,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import com.zadi.kosakatabahasaarab.R;
+import com.zadi.kosakatabahasaarab.config.Config;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,7 +39,6 @@ import java.util.HashMap;
 
 
 public class KosakataBuah extends AppCompatActivity {
-    public static String url = "http://192.168.43.228/kosakata/getdata_buah.php";
     private TextView  txtIndo, txtArab;
     private RecyclerView listRecycleView;
     private RequestQueue requestQueue;
@@ -48,15 +46,13 @@ public class KosakataBuah extends AppCompatActivity {
     private ImageView imgs;
     private Typeface faceArab, faceIndo;
 
-    static final int tampil_error=1;
     MediaPlayer mp3;
-    private final int play_voice = 2000;
 
     ArrayList<HashMap<String, String>> list_data;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_kosakata);
+        setContentView(R.layout.activity_item_kosakata);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -90,7 +86,7 @@ public class KosakataBuah extends AppCompatActivity {
             //saat ada koneksi
             new KosakataBuah.PrefechData().execute();
 
-            stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>(){
+            stringRequest = new StringRequest(Request.Method.GET, Config.url_buah, new Response.Listener<String>(){
 
                 @Override
                 public void onResponse(String response) {
@@ -110,7 +106,7 @@ public class KosakataBuah extends AppCompatActivity {
                             list_data.add(map);
                             //memasukkan data index ke 0 pada saat item kosakata di tampilkan
                             Glide.with(getApplicationContext())
-                                    .load("http://192.168.43.228/kosakata/images/" + list_data.get(0).get("image"))
+                                    .load(Config.TAG_IMAGES_KOSAKATA + list_data.get(0).get("image"))
                                     .crossFade()
                                     .placeholder(R.mipmap.no_available)
                                     .into(imgs);
@@ -127,12 +123,15 @@ public class KosakataBuah extends AppCompatActivity {
 
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(KosakataBuah.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                    //Server tidak ada
+                    Toast.makeText(KosakataBuah.this, "Tidak dapat menemukan server, mohon periksa ulang koneksi internet anda", Toast.LENGTH_LONG).show();
+                    finish();
                 }
             });
             requestQueue.add(stringRequest);
         }else {
-            showDialog(tampil_error);
+            //tidak ada koneksi internet
+            dialog_error();
              }
 
 
@@ -157,7 +156,7 @@ public class KosakataBuah extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(Void... params) {
-            Log.d("JSON",JSONTools.getJSON(url).toString());
+            Log.d("JSON", JSONTools.getJSON(Config.url_buah).toString());
             return null;
         }
         //dijalankan Saat data sudah terkumpul
@@ -165,40 +164,25 @@ public class KosakataBuah extends AppCompatActivity {
         protected void onPostExecute(Void result) {
             if(progress.isShowing()){
                 progress.dismiss();
-
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
                         playsound();
-                    }
-                },play_voice);
                 super.onPostExecute(result);
             }
         }
     }
 
-    @Override
-    protected Dialog onCreateDialog(int id) {
-        Dialog dialog = null;
-        switch (id){
-            case tampil_error:
-                AlertDialog.Builder errorDialog = new AlertDialog.Builder(this);
-                errorDialog.setTitle("Koneksi Error");
-                errorDialog.setMessage("Anda tidak terhubung ke internet");
-                errorDialog.setNeutralButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.dismiss();
-                        KosakataBuah.this.finish();
-                    }
-                }).show();
-                AlertDialog errorAlert = errorDialog.create();
-                return errorAlert;
-            default:
-                break;
-        }
-        return dialog;
+    private void dialog_error(){
+        final AlertDialog.Builder errorDialog = new AlertDialog.Builder(this);
+        errorDialog.setTitle("Koneksi Error");
+        errorDialog.setMessage("Anda tidak terhubung ke internet");
+        errorDialog.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+                KosakataBuah.this.finish();
+            }
+        }).show();
     }
+
     @Override
     protected void onPause() {
         try{

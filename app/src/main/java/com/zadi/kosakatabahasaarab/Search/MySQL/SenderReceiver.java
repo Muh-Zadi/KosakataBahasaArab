@@ -66,10 +66,12 @@ public class SenderReceiver extends AsyncTask<Void,Void,String> {
             {
                 Parser p = new Parser(c,result,rv);
                 p.execute();
+                noDataImg.setVisibility(View.INVISIBLE);
+                noNetworkImg.setVisibility(View.INVISIBLE);
             }else
             {
                 noNetworkImg.setVisibility(View.INVISIBLE);
-                noDataImg.setVisibility(View.INVISIBLE);
+                noDataImg.setVisibility(View.VISIBLE);
             }
 
         }else

@@ -20,7 +20,6 @@ public class Parser extends AsyncTask<Void, Void, Integer> {
     String data;
     RecyclerView rv;
     Context c;
-    //ArrayList<String> names=new ArrayList<>();
     ArrayList<HashMap<String, String>> names = new ArrayList<HashMap<String, String>>();
 
     public Parser(Context c, String data, RecyclerView rv) {

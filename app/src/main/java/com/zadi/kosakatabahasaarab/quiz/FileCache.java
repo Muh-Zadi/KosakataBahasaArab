@@ -4,7 +4,6 @@ package com.zadi.kosakatabahasaarab.quiz;
  * Created by Muh. Zadi on 6/18/2017.
  */
 import android.content.Context;
-
 import java.io.File;
 
 public class FileCache {
